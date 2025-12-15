@@ -47,8 +47,11 @@ class ScopeFilter:
         Returns:
             True si está en scope, False si no
         """
-        # Tokenizar y convertir a minúsculas
-        tokens = text.lower().split()
+        import re
+        
+        # Limpiar texto: remover puntuación y convertir a minúsculas
+        text_clean = re.sub(r'[^\w\s]', ' ', text.lower())
+        tokens = text_clean.split()
         
         # Contar cuántas keywords aparecen
         matches = 0

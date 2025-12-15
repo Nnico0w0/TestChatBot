@@ -10,6 +10,12 @@ from typing import List, Dict
 from collections import Counter
 import nltk
 
+# Descargar recursos de NLTK si no están disponibles
+try:
+    nltk.data.find('tokenizers/punkt_tab')
+except LookupError:
+    nltk.download('punkt_tab')
+
 
 class CustomTokenizer:
     """Tokenizador custom con vocabulario específico del dominio."""
