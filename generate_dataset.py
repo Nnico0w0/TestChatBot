@@ -6,12 +6,13 @@ Extracts content from official CURZA URLs and generates multiple question variat
 """
 
 import json
+import os
 import re
 import requests
+import time
 from bs4 import BeautifulSoup
 from typing import List, Dict, Tuple
 from urllib.parse import urljoin, urlparse
-import time
 
 
 class CURZADatasetGenerator:
@@ -99,17 +100,6 @@ class CURZADatasetGenerator:
         Includes formal, informal, typos, synonyms, and regional variations.
         """
         variations = []
-        
-        # Synonyms for common words
-        synonyms_map = {
-            'consultar': ['ver', 'buscar', 'encontrar', 'acceder', 'revisar', 'mirar'],
-            'información': ['info', 'datos', 'detalles'],
-            'página': ['sitio', 'web', 'link', 'enlace', 'URL'],
-            'dónde': ['donde'],  # without accent (typo)
-            'cómo': ['como'],    # without accent (typo)
-            'cuál': ['cual'],    # without accent (typo)
-            'qué': ['que'],      # without accent (typo)
-        }
         
         # Add original questions
         variations.extend(base_questions)
@@ -1014,8 +1004,6 @@ class CURZADatasetGenerator:
         
     def save_dataset(self, output_path: str = "datasets/curza_dataset.json") -> None:
         """Save the dataset to a JSON file."""
-        import os
-        
         # Create directory if it doesn't exist
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
         
