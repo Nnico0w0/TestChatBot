@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TestChatBot - Asistente Universitario</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎓 TestChatBot</h1>
+            <p class="subtitle">Asistente Virtual Universitario</p>
+        </header>
+
+        <div class="info-box">
+            <h3>Bienvenido al ChatBot Universitario</h3>
+            <p>Puedo ayudarte con preguntas sobre:</p>
+            <ul>
+                <li>📝 Inscripciones y admisión</li>
+                <li>📅 Calendario académico</li>
+                <li>🎯 Carreras y planes de estudio</li>
+                <li>⏰ Horarios de cátedra</li>
+                <li>📋 Trámites y documentación</li>
+                <li>📞 Contacto y ubicación</li>
+            </ul>
+        </div>
+
+        <div class="chat-container">
+            <div id="chat-messages" class="chat-messages">
+                <div class="message bot-message">
+                    <div class="message-content">
+                        ¡Hola! Soy tu asistente virtual universitario. ¿En qué puedo ayudarte hoy?
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-input-container">
+                <input 
+                    type="text" 
+                    id="user-input" 
+                    class="chat-input" 
+                    placeholder="Escribe tu pregunta aquí..."
+                    autocomplete="off"
+                >
+                <button id="send-button" class="send-button">Enviar</button>
+            </div>
+        </div>
+
+        <footer>
+            <p>Modelo Seq2Seq con Attention | Construido desde cero con PyTorch</p>
+            <p class="model-info">LSTM Bidireccional Encoder-Decoder</p>
+        </footer>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
