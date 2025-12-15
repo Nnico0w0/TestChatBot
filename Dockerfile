@@ -1,7 +1,7 @@
 # Dockerfile for TestChatBot
 # Multi-stage build for optimized image size
 
-FROM python:3.8-slim as base
+FROM python:3.10-slim AS base
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1 \
@@ -23,10 +23,12 @@ RUN apt-get update && apt-get install -y \
 COPY requirements.txt .
 
 # Install Python dependencies
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Download NLTK data (required by the application)
-RUN python -c "import nltk; nltk.download('punkt'); nltk.download('stopwords')"
+# Note: Using --trusted-host flags for environments with SSL certificate issues
+RUN pip install --no-cache-dir \
+    --trusted-host pypi.org \
+    --trusted-host pypi.python.org \
+    --trusted-host files.pythonhosted.org \
+    -r requirements.txt
 
 # Copy application code
 COPY . .
@@ -34,12 +36,15 @@ COPY . .
 # Create necessary directories
 RUN mkdir -p data/raw data/processed models/checkpoints models/tokenizer models/final
 
+# Download NLTK data (required by the application)
+RUN python -c "import nltk; nltk.download('punkt', quiet=True); nltk.download('stopwords', quiet=True)" || true
+
 # Expose port for FastAPI
 EXPOSE 8000
 
-# Health check
+# Health check - simple check that the server is responding
 HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
-    CMD python -c "import requests; requests.get('http://localhost:8000/health')" || exit 1
+    CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:8000/health', timeout=5)" || exit 1
 
 # Default command to run the API
 CMD ["uvicorn", "app.api:app", "--host", "0.0.0.0", "--port", "8000"]
