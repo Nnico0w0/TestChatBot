@@ -158,7 +158,22 @@ scope_filter:
 
 ## 🚀 Uso
 
-### 1. Instalación
+### Opción 1: Con Docker (Recomendado) 🐳
+
+```bash
+# Clonar repositorio
+git clone https://github.com/Nnico0w0/TestChatBot.git
+cd TestChatBot
+
+# Ejecutar con docker-compose
+docker-compose up --build
+
+# La aplicación estará disponible en http://localhost:8000
+```
+
+Para más detalles, ver [DOCKER.md](DOCKER.md)
+
+### Opción 2: Instalación Local
 
 ```bash
 # Clonar repositorio
