@@ -11,7 +11,25 @@ Guía para ejecutar TestChatBot usando Docker y Docker Compose.
 
 ## 🚀 Inicio Rápido con Docker Compose
 
-### 1. Construir y Ejecutar
+### Método 1: Script de Inicio Rápido (Recomendado)
+
+```bash
+# Clonar el repositorio
+git clone https://github.com/Nnico0w0/TestChatBot.git
+cd TestChatBot
+
+# Ejecutar el script de inicio
+bash docker-start.sh
+```
+
+El script automáticamente:
+- ✅ Verifica que Docker esté instalado y en ejecución
+- ✅ Crea el archivo `.env` si no existe
+- ✅ Crea los directorios necesarios
+- ✅ Construye y ejecuta los contenedores
+- ✅ Muestra la URL y comandos útiles
+
+### Método 2: Docker Compose Manual
 
 ```bash
 # Clonar el repositorio
@@ -20,9 +38,14 @@ cd TestChatBot
 
 # Construir y ejecutar con docker-compose
 docker-compose up --build
+
+# O en segundo plano
+docker-compose up --build -d
 ```
 
 La aplicación estará disponible en: http://localhost:8000
+
+> **Nota**: La aplicación iniciará correctamente incluso sin un modelo entrenado. El servidor web y la API estarán disponibles, pero necesitarás entrenar el modelo para que el chatbot pueda responder preguntas. Ver sección [Entrenamiento del Modelo](#entrenamiento-del-modelo).
 
 ### 2. Ejecutar en Segundo Plano
 

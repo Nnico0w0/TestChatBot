@@ -66,3 +66,6 @@ temp/
 
 # Config (if contains sensitive data)
 # config.yaml
+
+# Docker environment
+.env
