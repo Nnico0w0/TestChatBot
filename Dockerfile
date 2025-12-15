@@ -37,7 +37,9 @@ COPY . .
 RUN mkdir -p data/raw data/processed models/checkpoints models/tokenizer models/final
 
 # Download NLTK data (required by the application)
-RUN python -c "import nltk; nltk.download('punkt', quiet=True); nltk.download('stopwords', quiet=True)" || true
+# Note: In some CI/CD environments, NLTK downloads may fail due to SSL issues
+# The application will attempt to download the data on first run if needed
+RUN python download_nltk_data.py
 
 # Expose port for FastAPI
 EXPOSE 8000

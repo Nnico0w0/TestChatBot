@@ -45,12 +45,7 @@ temp/
 *.tmp
 
 # Docker
-Dockerfile
-docker-compose.yml
 .dockerignore
 
 # Documentation (not needed in container)
 *.md
-QUICKSTART.md
-USAGE_GUIDE.md
-IMPLEMENTATION_SUMMARY.md

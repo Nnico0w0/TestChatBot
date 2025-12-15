@@ -46,7 +46,19 @@ echo "🐳 Construyendo y ejecutando contenedores..."
 echo "   Esto puede tardar unos minutos la primera vez..."
 echo ""
 
-docker compose up --build -d
+# Try docker compose (v2) first, fallback to docker-compose (v1)
+if docker compose version &> /dev/null; then
+    COMPOSE_CMD="docker compose"
+elif command -v docker-compose &> /dev/null; then
+    COMPOSE_CMD="docker-compose"
+else
+    echo "❌ Error: Docker Compose no está instalado"
+    echo "   Instala Docker Compose desde: https://docs.docker.com/compose/install/"
+    exit 1
+fi
+
+echo "   Usando: $COMPOSE_CMD"
+$COMPOSE_CMD up --build -d
 
 if [ $? -eq 0 ]; then
     echo ""
@@ -59,9 +71,9 @@ if [ $? -eq 0 ]; then
     echo "❤️  Health Check: http://localhost:8000/health"
     echo ""
     echo "📋 Comandos útiles:"
-    echo "   Ver logs:     docker compose logs -f"
-    echo "   Detener:      docker compose down"
-    echo "   Reiniciar:    docker compose restart"
+    echo "   Ver logs:     $COMPOSE_CMD logs -f"
+    echo "   Detener:      $COMPOSE_CMD down"
+    echo "   Reiniciar:    $COMPOSE_CMD restart"
     echo ""
     echo "⚠️  Nota: El chatbot necesita un modelo entrenado para responder."
     echo "   Ver DOCKER.md para instrucciones de entrenamiento."
@@ -69,6 +81,6 @@ if [ $? -eq 0 ]; then
 else
     echo ""
     echo "❌ Error al iniciar los contenedores"
-    echo "   Revisa los logs con: docker compose logs"
+    echo "   Revisa los logs con: $COMPOSE_CMD logs"
     exit 1
 fi
