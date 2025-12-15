@@ -1,0 +1,520 @@
+
+
+Preguntas frecuentes - Inscripción y admisión 
+¿Cuándo comienzan las inscripciones a la universidad?
+¿Cuáles son los requisitos para inscribirme? 
+¿Dónde puedo hacer la inscripción? ¿Es online o presencial? 
+¿Qué documentación necesito presentar?
+¿Hay algún examen de ingreso o curso introductorio?
+¿Puedo inscribirme si todavía no terminé el secundario?
+¿Qué pasa si soy extranjero/a? ¿Puedo inscribirme igual?
+
+Estructura preliminar en JSON (Inscripción y Admisión)
+Estructura preliminar del dataset para el chatbot. Este JSON incluye: 
+Intent (la intención principal del usuario).
+Questions (todas las formas posibles de preguntar).
+Answer (la respuesta que dará el bot).
+[
+  {
+    "intent": "fechas_inscripcion",
+    "questions": [
+      "¿Cuándo comienzan las inscripciones a la universidad?",
+      "¿Cuándo abren las inscripciones?",
+      "¿Cuándo puedo anotarme en la universidad?",
+      "¿Hasta cuándo tengo tiempo para inscribirme?"
+    ],
+    "answer": "Las inscripciones comienzan en las fechas publicadas cada año por la institución. Consultá el calendario oficial de inscripción en el sitio web: [ENLACE]."
+  },
+  {
+    "intent": "requisitos_inscripcion",
+    "questions": [
+      "¿Cuáles son los requisitos para inscribirme?",
+      "¿Qué necesito para inscribirme?",
+      "¿Qué piden para el ingreso?",
+      "¿Cuáles son las condiciones para anotarme?"
+    ],
+    "answer": "Los requisitos generales incluyen: DNI, Certificado Analítico o Constancia de Finalización de Estudios y completar la preinscripción online. Consultá el detalle completo aquí: [ENLACE]."
+  },
+  {
+    "intent": "lugar_inscripcion",
+    "questions": [
+      "¿Dónde puedo hacer la inscripción?",
+      "¿La inscripción es online o presencial?",
+      "¿Dónde me tengo que anotar?",
+      "¿La inscripción se hace por internet?"
+    ],
+    "answer": "La inscripción se realiza a través del sistema de preinscripción online disponible en el sitio institucional. Algunas carreras pueden solicitar una presentación presencial de documentación."
+  },
+  {
+    "intent": "documentacion_inscripcion",
+    "questions": [
+      "¿Qué documentación necesito presentar?",
+      "¿Qué papeles tengo que llevar?",
+      "¿Qué documentos necesito para la inscripción?"
+    ],
+    "answer": "La documentación requerida incluye: fotocopia del DNI, Certificado Analítico o Constancia de Finalización de Estudios (indicando si adeudas materias) y el formulario de preinscripción."
+  },
+  {
+    "intent": "examen_ingreso",
+    "questions": [
+      "¿Hay algún examen de ingreso?",
+      "¿Tengo que rendir algo para entrar?",
+      "¿Hay curso introductorio obligatorio?"
+    ],
+    "answer": "No se exige un examen de ingreso para las carreras de la institución. Algunas carreras pueden incluir un curso introductorio informativo."
+  },
+  {
+    "intent": "inscripcion_sin_secundario_finalizado",
+    "questions": [
+      "¿Puedo inscribirme si todavía no terminé el secundario?",
+      "¿Me puedo inscribir si adeudo materias?",
+      "¿Me puedo anotar si todavía estoy cursando el último año?"
+    ],
+    "answer": "Podés iniciar la inscripción con Constancia de Finalización de Estudios que indique si adeudás materias. La entrega del Certificado Analítico será obligatoria al finalizar el ciclo lectivo."
+  },
+  {
+    "intent": "inscripcion_extranjeros",
+    "questions": [
+      "¿Qué pasa si soy extranjero/a?",
+      "¿Puedo inscribirme si no soy argentino/a?",
+      "¿Los extranjeros pueden inscribirse?"
+    ],
+    "answer": "Las personas extranjeras pueden inscribirse. Deben presentar DNI para extranjeros, pasaporte, o residencia precaria y la documentación de estudios secundarios convalidada según normativa vigente."
+  }
+]
+
+Preguntas frecuentes - Calendario Académico
+1.¿Dónde puedo ver el calendario académico?
+2.¿Dónde puedo descargar el calendario académico?
+3.¿El calendario académico está disponible online?
+4.¿Cuándo comienzan las clases?
+5.¿Cuándo finaliza el cuatrimestre?
+6.¿Cuándo puedo anotarme a las materias?
+7.¿Cuándo empiezan las actividades en la universidad?
+8.¿El calendario incluye los exámenes?
+
+Estructura preliminar en JSON (Calendario Académico)
+[
+  {
+    "intent": "ver_calendario_academico",
+    "questions": [
+      "¿Dónde puedo ver el calendario académico?",
+      "¿Dónde encuentro el calendario académico?",
+      "¿El calendario académico está disponible online?",
+      "¿Dónde puedo descargar el calendario académico?",
+      "¿Dónde está la resolución del calendario académico?"
+    ],
+    "answer": "El calendario académico está disponible en la sección oficial de Calendario Académico en el sitio institucional [ENLACE]."
+  },
+  {
+    "intent": "inicio_fin_clases",
+    "questions": [
+      "¿Cuándo comienzan las clases?",
+      "¿Cuándo empiezan las actividades académicas?",
+      "¿Cuándo finaliza el cuatrimestre?",
+      "¿Cuándo termina el ciclo lectivo?"
+    ],
+    "answer": "Las fechas de inicio y finalización de clases están detalladas en el calendario académico anual disponible en la web institucional[ENLACE]."
+  },
+  {
+    "intent": "dias_sin_actividad",
+    "questions": [
+      "¿Qué días no hay actividades académicas?",
+      "¿Cuándo no hay clases?",
+      "¿Cuáles son los días sin actividad académica?",
+      "¿Dónde veo los feriados o días institucionales?"
+    ],
+    "answer": "Los días sin actividad académica, feriados y jornadas institucionales se encuentran especificados dentro del calendario académico oficial publicado en la web [ENLACE]."
+  },
+  {
+    "intent": "periodos_preinscripcion",
+    "questions": [
+      "¿Cuándo son los periodos de preinscripción?",
+      "¿Cuándo abre la preinscripción para ingresantes?",
+      "¿Hasta cuándo me puedo preinscribir?",
+      "¿Dónde veo las fechas de preinscripción?"
+    ],
+    "answer": "Los periodos de preinscripción están incluidos dentro del calendario académico y pueden consultarse en la web institucional correspondiente al año en curso."
+  },
+  {
+    "intent": "fechas_actividades_universitarias",
+    "questions": [
+      "¿Dónde puedo ver todas las fechas importantes del año?",
+      "¿El calendario incluye parciales y finales?",
+      "¿El calendario académico se actualiza cada año?"
+    ],
+    "answer": "El calendario académico detalla todas las actividades del año: inscripciones, cursadas, exámenes finales, recesos y más. El calendario se encuentra en la página oficial."
+  }
+]
+
+Preguntas frecuentes - Departamento de Alumnos
+¿Cómo me comunico con el Departamento de Alumnos?
+¿Cuál es el correo del Departamento de Alumnos?
+¿Hay un número de teléfono para comunicarme?
+¿Tienen redes sociales?
+¿Dónde puedo hacer consultas sobre trámites de alumnos?
+¿Dónde está ubicado el Departamento de Alumnos?
+¿Cuáles son los horarios de atención?
+¿Atienden presencialmente?
+¿Qué trámites se realizan en el Departamento de Alumnos?
+¿Dónde hago consultas sobre mi regularidad?
+¿Dónde pido constancias o certificados?
+¿Dónde consulto mi situación académica?
+
+Estructura preliminar en JSON (Departamento de Alumnos)
+[
+  {
+    "intent": "contacto_departamento_alumnos",
+    "questions": [
+      "¿Cómo me comunico con el Departamento de Alumnos?",
+      "¿Cuál es el correo del Departamento de Alumnos?",
+      "¿Cuál es el email del Departamento de Alumnos?",
+      "¿Tienen un teléfono para comunicarme?",
+      "¿Dónde puedo hacer consultas como alumno?"
+    ],
+    "answer": "Podés comunicarte con el Departamento de Alumnos por correo o teléfono. Datos de contacto: [EMAIL] | [TELÉFONO]."
+  },
+  {
+    "intent": "ubicacion_departamento_alumnos",
+    "questions": [
+      "¿Dónde queda el Departamento de Alumnos?",
+      "¿Dónde está ubicado el Departamento de Alumnos?",
+      "¿En qué sede atiende el Departamento de Alumnos?"
+    ],
+    "answer": "El Departamento de Alumnos está ubicado en: [DIRECCIÓN / SEDE]. Podés acercarte dentro del horario de atención."
+  },
+  {
+    "intent": "horarios_atencion_departamento",
+    "questions": [
+      "¿Cuáles son los horarios de atención del Departamento de Alumnos?",
+      "¿En qué horario atiende el Departamento de Alumnos?",
+      "¿Atienden presencialmente?",
+      "¿Necesito turno para ir al Departamento de Alumnos?"
+    ],
+    "answer": "El horario de atención del Departamento de Alumnos es: [HORARIO]. Revisá siempre la información actualizada en la página institucional."
+  },
+  {
+    "intent": "tramites_departamento_alumnos",
+    "questions": [
+      "¿Qué trámites puedo hacer en el Departamento de Alumnos?",
+      "¿Dónde pido constancias?",
+      "¿Dónde consulto mi regularidad?",
+      "¿Dónde gestiono mis certificados?"
+    ],
+    "answer": "El Departamento de Alumnos gestiona trámites como consultas de regularidad, constancias, certificados e inscripciones. Contactate por correo o teléfono para mayor información."
+  }
+]
+
+Preguntas frecuentes - Carreras
+¿Qué carreras ofrece la universidad?
+¿Dónde puedo ver todas las carreras?
+¿La universidad tiene un listado de carreras disponibles?
+¿Dónde puedo ver el plan de estudios de cada carrera?
+¿Las carreras son presenciales, virtuales o mixtas?
+¿Puedo estudiar de forma online?
+¿Cuánto dura cada carrera?
+¿Las carreras tienen título intermedio?
+¿Puedo obtener un título antes de terminar toda la carrera?
+¿Hay certificados parciales durante la carrera?
+¿Cuántas materias tengo que cursar por año?
+¿Existe un límite de materias por cuatrimestre?
+¿Los planes de estudio incluyen prácticas profesionales o pasantías?
+¿Hay equivalencias si vengo de otra institución?
+¿La universidad acepta materias aprobadas en otra institución?
+¿Cómo hago para solicitar equivalencias?
+¿Dónde puedo consultar la salida laboral de cada carrera?
+¿Cuál es el perfil del graduado de [Nombre de la carrera]?
+¿Qué materias obligatorias y optativas tiene?
+¿La carrera requiere conocimientos previos?
+¿Se cursa turno mañana, tarde o noche?
+¿Hay cupos limitados para la carrera?
+¿Cómo hago para cambiar de carrera?
+¿Cómo solicito un cambio de plan de estudios?
+¿Puedo estudiar más de una carrera al mismo tiempo?
+¿Puedo retomarla si dejé de cursar varios años?
+
+Estructura preliminar en JSON (Carreras)
+{
+  "carreras": [
+    {
+      "intent": "oferta_carreras",
+      "questions": [
+        "¿Qué carreras ofrece la universidad?",
+        "¿Dónde puedo ver todas las carreras?",
+        "¿La universidad tiene un listado de carreras disponibles?"
+      ],
+      "answer": "Podés ver todas las carreras que ofrece la universidad en la sección oficial de Carreras del sitio institucional. Allí se encuentra el listado completo con tecnicaturas, licenciaturas y demás programas académicos."
+    },
+    {
+      "intent": "plan_estudios",
+      "questions": [
+        "¿Dónde puedo ver el plan de estudios de cada carrera?",
+        "¿Qué materias obligatorias y optativas tiene?"
+      ],
+      "answer": "Cada carrera tiene disponible su plan de estudios en su página correspondiente. Allí podrás ver las materias obligatorias, optativas, cargas horarias y la estructura del trayecto formativo."
+    },
+    {
+      "intent": "modalidad",
+      "questions": [
+        "¿Las carreras son presenciales, virtuales o mixtas?",
+        "¿Puedo estudiar de forma online?"
+      ],
+      "answer": "La modalidad depende de cada carrera. En la información oficial de cada una se especifica si es presencial, virtual o de modalidad combinada."
+    },
+    {
+      "intent": "duracion",
+      "questions": [
+        "¿Cuánto dura cada carrera?"
+      ],
+      "answer": "La duración varía según el tipo de carrera. Las tecnicaturas suelen durar entre 2 y 3 años, mientras que las licenciaturas son de 4 a 5 años. La duración exacta está indicada en la página de cada carrera."
+    },
+    {
+      "intent": "titulo_intermedio",
+      "questions": [
+        "¿Las carreras tienen título intermedio?",
+        "¿Puedo obtener un título antes de terminar toda la carrera?",
+        "¿Hay certificados parciales durante la carrera?"
+      ],
+      "answer": "Algunas carreras cuentan con títulos intermedios o certificaciones parciales. Esta información aparece dentro del plan de estudios de cada carrera."
+    },
+    {
+      "intent": "cantidad_materias",
+      "questions": [
+        "¿Cuántas materias tengo que cursar por año?",
+        "¿Existe un límite de materias por cuatrimestre?"
+      ],
+      "answer": "La cantidad de materias por año depende del plan de estudios de cada carrera. También puede existir un límite de inscripciones por cuatrimestre según el reglamento académico vigente."
+    },
+    {
+      "intent": "practicas_profesionales",
+      "questions": [
+        "¿Los planes de estudio incluyen prácticas profesionales o pasantías?"
+      ],
+      "answer": "Muchas carreras incluyen prácticas profesionales, pasantías o actividades de formación en el campo laboral. Esto se indica dentro del plan de estudios."
+    },
+    {
+      "intent": "equivalencias",
+      "questions": [
+        "¿Hay equivalencias si vengo de otra institución?",
+        "¿La universidad acepta materias aprobadas en otra institución?",
+        "¿Cómo hago para solicitar equivalencias?"
+      ],
+      "answer": "Podés solicitar equivalencias presentando la documentación correspondiente en el Departamento de Alumnos. Las equivalencias se analizan según el reglamento académico y los contenidos de las materias."
+    },
+    {
+      "intent": "salida_laboral",
+      "questions": [
+        "¿Dónde puedo consultar la salida laboral de cada carrera?",
+        "¿Cuál es el perfil del graduado de [Nombre de la carrera]?"
+      ],
+      "answer": "La salida laboral y el perfil del graduado se encuentran en la sección específica de cada carrera dentro del sitio institucional."
+    },
+    {
+      "intent": "requisitos_previos",
+      "questions": [
+        "¿La carrera requiere conocimientos previos?"
+      ],
+      "answer": "En general no se requieren conocimientos previos, salvo excepciones que estén indicadas en la descripción de la carrera o en su plan de estudios."
+    },
+    {
+      "intent": "horarios_cursada",
+      "questions": [
+        "¿Se cursa turno mañana, tarde o noche?"
+      ],
+      "answer": "Los horarios pueden variar según la carrera y el cuatrimestre. Los turnos disponibles se publican junto con el calendario de inscripción a materias."
+    },
+    {
+      "intent": "cupo_carreras",
+      "questions": [
+        "¿Hay cupos limitados para la carrera?"
+      ],
+      "answer": "Algunas carreras pueden tener cupo limitado según resolución institucional. Si corresponde, esta información se publica junto al período de inscripción."
+    },
+    {
+      "intent": "cambio_carrera",
+      "questions": [
+        "¿Cómo hago para cambiar de carrera?",
+        "¿Cómo solicito un cambio de plan de estudios?"
+      ],
+      "answer": "El cambio de carrera o de plan de estudios se gestiona a través del Departamento de Alumnos. Allí se informan los requisitos y plazos establecidos por el calendario académico."
+    },
+    {
+      "intent": "doble_carrera",
+      "questions": [
+        "¿Puedo estudiar más de una carrera al mismo tiempo?"
+      ],
+      "answer": "En muchos casos es posible cursar dos carreras simultáneamente, siempre que cumplas con el reglamento académico y la disponibilidad horaria."
+    },
+    {
+      "intent": "retomar_carrera",
+      "questions": [
+        "¿Puedo retomarla si dejé de cursar varios años?"
+      ],
+      "answer": "Podés solicitar el reingreso a la carrera si dejaste de cursar, siguiendo los pasos indicados por el Departamento de Alumnos. Dependiendo del tiempo transcurrido, puede requerirse actualización de documentación o cambio de plan."
+    }
+  ]
+}
+
+Preguntas frecuentes - Horarios de cátedra
+¿Dónde puedo ver los horarios de las cátedras?
+¿La universidad publica los horarios antes del inicio de clases?
+¿Cuándo se publican los horarios de cursada?
+¿Los horarios cambian todos los cuatrimestres?
+¿Dónde descargo el cronograma de horarios?
+¿Qué turnos hay disponibles para cursar? (mañana, tarde, noche)
+¿Puedo elegir el horario de cursada?
+¿Todas las materias tienen varios horarios o solo algunas?
+¿Todas las materias tienen varios horarios o solo algunas?
+¿Necesito elegir un horario al inscribirme a la materia?
+¿El sistema me asigna el horario automáticamente?
+¿Qué pasa si un horario aparece lleno?
+¿Puedo cambiar de horario después de inscribirme?
+¿Los horarios pueden modificarse después de publicados?
+¿Cómo me entero si cambian el horario de una materia?
+¿Dónde se informan cambios de aula o profesor?
+¿Cuánto dura cada clase?
+¿Qué pasa si tengo superposición de horarios?
+¿Las materias virtuales tienen horarios de encuentro sincrónico?
+
+Estructura preliminar en JSON (Horarios de cátedra)
+{
+  "horarios_catedras": [
+    {
+      "intent": "consultar_horarios",
+      "questions": [
+        "¿Dónde puedo ver los horarios de las cátedras?",
+        "¿La universidad publica los horarios antes del inicio de clases?",
+        "¿Cuándo se publican los horarios de cursada?",
+        "¿Los horarios cambian todos los cuatrimestres?",
+        "¿Dónde descargo el cronograma de horarios?"
+      ],
+      "answer": "Los horarios de las cátedras se publican en el sitio oficial de la universidad, dentro de la sección Horarios o Cursada. Generalmente se encuentran disponibles antes del inicio del cuatrimestre y pueden descargarse en formato PDF."
+    },
+    {
+      "intent": "turnos_disponibles",
+      "questions": [
+        "¿Qué turnos hay disponibles para cursar?",
+        "¿Puedo elegir el horario de cursada?",
+        "¿Todas las materias tienen varios horarios?",
+        "¿Los horarios son los mismos para todas las carreras?"
+      ],
+      "answer": "Los turnos disponibles pueden variar según la carrera y la materia. En general, las cátedras pueden ofrecer horarios por la mañana, tarde o noche. La disponibilidad de turnos se detalla en el cronograma oficial."
+    },
+    {
+      "intent": "inscripcion_horarios",
+      "questions": [
+        "¿Necesito elegir un horario al inscribirme a la materia?",
+        "¿El sistema me asigna el horario automáticamente?",
+        "¿Qué pasa si un horario aparece lleno?",
+        "¿Puedo cambiar de horario después de inscribirme?"
+      ],
+      "answer": "Durante la inscripción a materias, deberás seleccionar el horario disponible. Si un horario está completo, aparecerá como no disponible. Los cambios de horario dependen del sistema de inscripción y de los cupos restantes."
+    },
+    {
+      "intent": "modificaciones_horarios",
+      "questions": [
+        "¿Los horarios pueden modificarse después de publicados?",
+        "¿Cómo me entero si cambian el horario de una materia?",
+        "¿Dónde se informan cambios de aula o profesor?"
+      ],
+      "answer": "Los horarios pueden sufrir modificaciones por cuestiones organizativas. Los cambios se informan a través del sitio oficial, el correo institucional o los canales de comunicación de la carrera. Es importante revisar periódicamente las novedades."
+    },
+    {
+      "intent": "detalles_cursada",
+      "questions": [
+        "¿Cuánto dura cada clase?",
+        "¿Qué pasa si tengo superposición de horarios?",
+        "¿Las materias virtuales tienen horarios de encuentro sincrónico?"
+      ],
+      "answer": "La duración de cada clase suele estar indicada en el horario oficial. Si tenés superposición de horarios, deberás ajustar tu inscripción. En el caso de materias virtuales, algunas pueden incluir encuentros sincrónicos en días y horarios específicos."
+    }
+  ]
+}
+
+ 
+Preguntas frecuentes - Guía de Trámites
+¿Cómo solicito equivalencias si vengo de otra universidad?
+¿Qué documentación necesito para pedir equivalencias externas?
+¿Dónde presento el trámite?
+¿Cuánto tarda la evaluación de equivalencias?
+¿Puedo cursar mientras espero la aprobación?
+¿Cómo hago para solicitar un cambio de carrera?
+¿Qué requisitos tiene el cambio de carrera?
+¿El cambio se hace por SIU o por formulario?
+¿Puedo pedir equivalencias cuando cambio de carrera?
+¿Cuándo se abre el período para solicitar el cambio?
+¿Qué es el cursado paralelo?
+¿Puedo cursar materias de dos carreras al mismo tiempo?
+¿Cómo solicito el cursado paralelo?
+¿Hay requisitos de promedio o regularidad?
+¿Dónde presento el formulario de cursado paralelo?
+¿Cómo solicito equivalencias entre carreras dentro de la misma universidad?
+¿Qué diferencia hay entre equivalencias internas y externas?
+¿Qué documentación necesito?
+¿Dónde se realiza el trámite?
+¿Cuánto tarda en resolverse?
+¿Cómo creo mi usuario en SIU Guaraní?
+¿Perdí mi contraseña del SIU, cómo la recupero?
+¿Dónde recibo el enlace para restablecer la clave?
+¿Qué hago si no me llega el correo de recuperación?
+
+Estructura preliminar en JSON (Guia de tramites)
+{
+  "intents": [
+    {
+      "intent": "equivalencias_externas",
+      "questions": [
+        "¿Cómo solicito equivalencias si vengo de otra universidad?",
+        "¿Qué documentación necesito para pedir equivalencias externas?",
+        "¿Dónde presento el trámite?",
+        "¿Cuánto tarda la evaluación de equivalencias?",
+        "¿Puedo cursar mientras espero la aprobación?"
+      ],
+      "answer": "Para solicitar equivalencias externas (de otra universidad o instituto), debés completar el instructivo correspondiente y presentar la documentación requerida. Generalmente se solicita: certificado analítico parcial, programas de las materias aprobadas y el formulario de solicitud. El trámite se presenta en el Departamento de Alumnos. La evaluación puede demorar varias semanas según la carrera. En la mayoría de los casos podés cursar mientras esperás la resolución."
+    },
+    {
+      "intent": "cambio_carrera",
+      "questions": [
+        "¿Cómo hago para solicitar un cambio de carrera?",
+        "¿Qué requisitos tiene el cambio de carrera?",
+        "¿El cambio se hace por SIU o por formulario?",
+        "¿Puedo pedir equivalencias cuando cambio de carrera?",
+        "¿Cuándo se abre el período para solicitar el cambio?"
+      ],
+      "answer": "El cambio de carrera se solicita completando el formulario correspondiente, que debe presentarse en el Departamento de Alumnos. Los requisitos suelen incluir estar regular y no tener sanciones académicas. El trámite no se hace por SIU Guaraní sino mediante formulario. Si cambiás de carrera, podés solicitar equivalencias internas. Las fechas disponibles dependen del Calendario Académico anual."
+    },
+    {
+      "intent": "cursado_paralelo",
+      "questions": [
+        "¿Qué es el cursado paralelo?",
+        "¿Puedo cursar materias de dos carreras al mismo tiempo?",
+        "¿Cómo solicito el cursado paralelo?",
+        "¿Hay requisitos de promedio o regularidad?",
+        "¿Dónde presento el formulario de cursado paralelo?"
+      ],
+      "answer": "El cursado paralelo permite cursar materias de otra carrera mientras seguís inscripta en tu carrera principal. Sí, es posible cursar materias de dos carreras si el pedido es aprobado. El trámite se realiza completando el formulario de Cursado Paralelo y presentándolo en el Departamento de Alumnos. Se suelen solicitar requisitos de regularidad y un promedio mínimo. La información detallada está en el instructivo de la Guía de Trámites."
+    },
+    {
+      "intent": "equivalencias_internas",
+      "questions": [
+        "¿Cómo solicito equivalencias entre carreras dentro de la misma universidad?",
+        "¿Qué diferencia hay entre equivalencias internas y externas?",
+        "¿Qué documentación necesito?",
+        "¿Dónde se realiza el trámite?",
+        "¿Cuánto tarda en resolverse?"
+      ],
+      "answer": "Las equivalencias internas se solicitan cuando pasás de una carrera a otra dentro de la misma universidad. A diferencia de las externas, no requieren programas sellados porque los contenidos pertenecen a la misma institución. Se debe completar el formulario correspondiente y presentar un comprobante de materias aprobadas. El trámite se realiza en el Departamento de Alumnos y suele resolverse más rápido que las equivalencias externas."
+    },
+    {
+      "intent": "siu_usuario_clave",
+      "questions": [
+        "¿Cómo creo mi usuario en SIU Guaraní?",
+        "Perdí mi contraseña del SIU, ¿cómo la recupero?",
+        "¿Dónde recibo el enlace para restablecer la clave?",
+        "¿Qué hago si no me llega el correo de recuperación?"
+      ],
+      "answer": "Para crear tu usuario en SIU Guaraní, seguí el instructivo disponible en la Guía de Trámites. Si olvidaste tu contraseña, podés recuperarla desde la opción '¿Olvidaste tu clave?' en la pantalla de inicio. El enlace para restablecer la clave llegará al correo registrado en el sistema. Si no recibís el correo, revisá la carpeta de spam o verificá que tu email esté actualizado. Si el problema continúa, comunicate con el Departamento de Alumnos."
+    }
+  ]
+}
+
