@@ -31,3 +31,8 @@ pydantic>=2.0.0
 
 # Utilities
 python-multipart>=0.0.6
+
+# Web Scraping (for dataset generation)
+beautifulsoup4>=4.12.3
+lxml>=5.1.0
+requests>=2.31.0
