@@ -2,7 +2,22 @@
 
 Guía rápida para empezar en 5 minutos.
 
-## ⚡ Instalación Rápida
+## ⚡ Opción 1: Con Docker (Más Rápido) 🐳
+
+```bash
+# 1. Clonar y entrar al directorio
+git clone https://github.com/Nnico0w0/TestChatBot.git
+cd TestChatBot
+
+# 2. Ejecutar con el script de inicio rápido
+bash docker-start.sh
+
+# La aplicación estará disponible en http://localhost:8000
+```
+
+Ver [DOCKER.md](DOCKER.md) para más detalles y opciones avanzadas.
+
+## ⚡ Opción 2: Instalación Local
 
 ```bash
 # 1. Clonar y entrar al directorio

@@ -91,9 +91,14 @@ TestChatBot/
 │       ├── style.css
 │       └── script.js
 │
+├── scripts/
+│   └── unify_datasets.py           # Script de unificación de datasets
+│
 ├── config.yaml                     # Configuración de hiperparámetros
 ├── requirements.txt                # Dependencias del proyecto
 ├── train.sh                        # Script para entrenar fácilmente
+├── docker-compose.yml              # Configuración Docker Compose
+├── Dockerfile                      # Imagen Docker del proyecto
 ├── README.md                       # Este archivo
 └── .gitignore
 ```
@@ -158,7 +163,22 @@ scope_filter:
 
 ## 🚀 Uso
 
-### 1. Instalación
+### Opción 1: Con Docker (Recomendado) 🐳
+
+```bash
+# Clonar repositorio
+git clone https://github.com/Nnico0w0/TestChatBot.git
+cd TestChatBot
+
+# Ejecutar con docker-compose
+docker-compose up --build
+
+# La aplicación estará disponible en http://localhost:8000
+```
+
+Para más detalles, ver [DOCKER.md](DOCKER.md)
+
+### Opción 2: Instalación Local
 
 ```bash
 # Clonar repositorio
@@ -173,7 +193,21 @@ source venv/bin/activate  # En Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-### 2. Preprocesamiento
+### 2. Gestión de Datasets (Opcional)
+
+Si tienes múltiples datasets para unificar:
+
+```bash
+# Unificar y optimizar datasets
+python scripts/unify_datasets.py
+
+# Actualizar config.yaml para usar el dataset unificado
+# Cambiar raw_data_path: "data/raw/unified_dataset.json"
+```
+
+Ver [scripts/README.md](scripts/README.md) para más detalles.
+
+### 3. Preprocesamiento
 
 ```bash
 python src/preprocessing.py
@@ -183,7 +217,7 @@ Esto generará:
 - `data/processed/train.pkl` - Datos de entrenamiento
 - `data/processed/val.pkl` - Datos de validación
 
-### 3. Construir Tokenizador
+### 4. Construir Tokenizador
 
 ```bash
 python src/tokenizer.py
@@ -193,7 +227,7 @@ Esto generará:
 - `models/tokenizer/tokenizer.pkl` - Tokenizador entrenado
 - `data/processed/vocab.json` - Vocabulario del modelo
 
-### 4. Entrenamiento
+### 5. Entrenamiento
 
 ```bash
 # Entrenamiento simple
@@ -212,7 +246,7 @@ nohup python src/train.py > training.log 2>&1 &
 Start-Process python -ArgumentList "src/train.py" -RedirectStandardOutput "training.log" -NoNewWindow
 ```
 
-### 5. Inferencia (probar el chatbot)
+### 6. Inferencia (probar el chatbot)
 
 ```bash
 # Modo interactivo
@@ -222,7 +256,7 @@ python src/inference.py
 python src/inference.py --question "¿Cuándo comienzan las inscripciones?"
 ```
 
-### 6. Ejecutar API Web
+### 7. Ejecutar API Web
 
 ```bash
 uvicorn app.api:app --reload

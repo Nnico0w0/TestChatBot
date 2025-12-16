@@ -1,0 +1,32 @@
+services:
+  chatbot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: testchatbot
+    ports:
+      - "8000:8000"
+    volumes:
+      # Mount data directories to persist models and data
+      - ./data:/app/data
+      - ./models:/app/models
+      # Mount config file
+      - ./config.yaml:/app/config.yaml
+    environment:
+      # PyTorch settings
+      - TORCH_HOME=/app/models/.torch
+      # Python settings
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health', timeout=5)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - chatbot-network
+
+networks:
+  chatbot-network:
+    driver: bridge

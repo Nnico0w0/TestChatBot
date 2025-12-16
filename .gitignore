@@ -36,6 +36,9 @@ models/final/*.pt
 data/processed/*.pkl
 data/processed/*.json
 
+# Generated unified datasets
+data/raw/unified_dataset.json
+
 # Tokenizer
 models/tokenizer/*.pkl
 
@@ -66,3 +69,6 @@ temp/
 
 # Config (if contains sensitive data)
 # config.yaml
+
+# Docker environment
+.env

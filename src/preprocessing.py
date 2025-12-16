@@ -60,10 +60,10 @@ class DataPreprocessor:
     
     def parse_dataset(self, file_path: str) -> List[Dict]:
         """
-        Parsea el archivo de dataset en formato texto/JSON mixto.
+        Parsea el archivo de dataset en formato JSON directo o texto/JSON mixto.
         
         Args:
-            file_path: Ruta al archivo del dataset
+            file_path: Ruta al archivo del dataset (soporta .json y .txt)
             
         Returns:
             Lista de diccionarios con intents, preguntas y respuestas
@@ -71,21 +71,41 @@ class DataPreprocessor:
         with open(file_path, 'r', encoding='utf-8') as f:
             content = f.read()
         
-        # Extraer bloques JSON del archivo
-        json_pattern = r'\[[\s\S]*?\](?=\n\n|\Z)'
-        json_blocks = re.findall(json_pattern, content)
-        
         all_data = []
-        for block in json_blocks:
-            try:
-                # Intentar parsear cada bloque como JSON
-                data = json.loads(block)
-                if isinstance(data, list):
-                    all_data.extend(data)
-                else:
-                    all_data.append(data)
-            except json.JSONDecodeError:
-                continue
+        
+        # Intentar primero como JSON directo (formato nuevo)
+        try:
+            data = json.loads(content)
+            
+            # Normalizar estructura si es necesario
+            if isinstance(data, dict):
+                # Si el JSON tiene una clave raíz, extraer los intents
+                for key in ['intents', 'data', 'dataset']:
+                    if key in data:
+                        data = data[key]
+                        break
+            
+            if isinstance(data, list):
+                all_data = data
+            else:
+                all_data = [data]
+        
+        except json.JSONDecodeError:
+            # Si falla, parsear como formato texto mixto (formato antiguo)
+            # Extraer bloques JSON del archivo
+            json_pattern = r'\[[\s\S]*?\](?=\n\n|\Z)'
+            json_blocks = re.findall(json_pattern, content)
+            
+            for block in json_blocks:
+                try:
+                    # Intentar parsear cada bloque como JSON
+                    data = json.loads(block)
+                    if isinstance(data, list):
+                        all_data.extend(data)
+                    else:
+                        all_data.append(data)
+                except json.JSONDecodeError:
+                    continue
         
         # Aplanar estructuras anidadas
         flattened_data = []
