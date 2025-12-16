@@ -36,6 +36,9 @@ models/final/*.pt
 data/processed/*.pkl
 data/processed/*.json
 
+# Generated unified datasets
+data/raw/unified_dataset.json
+
 # Tokenizer
 models/tokenizer/*.pkl
 
