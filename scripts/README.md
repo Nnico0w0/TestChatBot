@@ -21,8 +21,20 @@ Script para unificar y optimizar múltiples datasets del chatbot.
 **Uso:**
 
 ```bash
-# Desde la raíz del proyecto
+# Uso básico (usa datasets por defecto)
 python scripts/unify_datasets.py
+
+# Especificar datasets personalizados
+python scripts/unify_datasets.py --datasets data/raw/qa_dataset.txt datasets/curza_dataset.json
+
+# Especificar archivo de salida personalizado
+python scripts/unify_datasets.py --output my_unified_dataset.json
+
+# Combinar ambos
+python scripts/unify_datasets.py --datasets dataset1.json dataset2.txt --output output.json
+
+# Ver ayuda
+python scripts/unify_datasets.py --help
 ```
 
 **Archivos de entrada:**

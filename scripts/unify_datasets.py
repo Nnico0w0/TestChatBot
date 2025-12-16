@@ -12,8 +12,11 @@ Funcionalidad:
 
 Uso:
     python scripts/unify_datasets.py
+    python scripts/unify_datasets.py --datasets dataset1.json dataset2.txt
+    python scripts/unify_datasets.py --output custom_output.json
 """
 
+import argparse
 import json
 import re
 import sys
@@ -271,6 +274,8 @@ class DatasetUnifier:
                 print(f"  ❌ Item {i} ({item.get('intent', 'unknown')}) 'questions' no es lista")
                 valid = False
             elif len(item['questions']) < min_questions:
+                # Nota: Intents con pocas preguntas se registran pero no invalidan el dataset
+                # Esto es solo una advertencia para mejorar la calidad del entrenamiento
                 intent_name = item.get('intent', 'unknown')
                 self.stats['intents_with_few_questions'].append({
                     'intent': intent_name,
@@ -305,8 +310,9 @@ class DatasetUnifier:
             answer = self.clean_answer(item['answer'])
             answer = self.shorten_answer(answer, max_words=150)
             
-            # Eliminar preguntas duplicadas
-            questions = list(set(item['questions']))
+            # Eliminar preguntas duplicadas preservando orden
+            # Usar dict.fromkeys() es más eficiente que set() para listas grandes
+            questions = list(dict.fromkeys(item['questions']))
             questions.sort()  # Ordenar para consistencia
             
             optimized_item = {
@@ -414,15 +420,36 @@ class DatasetUnifier:
 
 def main():
     """Función principal."""
-    # Definir rutas de datasets a unificar
-    dataset_paths = [
-        "data/raw/qa_dataset.txt",
-        "datasets/curza_dataset.json",  # Se agregará cuando esté disponible
-    ]
+    parser = argparse.ArgumentParser(
+        description='Unifica y optimiza múltiples datasets del chatbot',
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Ejemplos:
+  %(prog)s
+  %(prog)s --datasets data/raw/qa_dataset.txt datasets/curza_dataset.json
+  %(prog)s --output my_dataset.json
+  %(prog)s --datasets dataset1.json dataset2.txt --output unified.json
+        """
+    )
+    
+    parser.add_argument(
+        '--datasets',
+        nargs='+',
+        default=["data/raw/qa_dataset.txt", "datasets/curza_dataset.json"],
+        help='Rutas a los datasets para unificar (default: data/raw/qa_dataset.txt datasets/curza_dataset.json)'
+    )
+    
+    parser.add_argument(
+        '--output',
+        default="data/raw/unified_dataset.json",
+        help='Ruta del archivo de salida (default: data/raw/unified_dataset.json)'
+    )
+    
+    args = parser.parse_args()
     
     # Crear unificador y ejecutar
-    unifier = DatasetUnifier(output_path="data/raw/unified_dataset.json")
-    unifier.run(dataset_paths)
+    unifier = DatasetUnifier(output_path=args.output)
+    unifier.run(args.datasets)
 
 
 if __name__ == "__main__":
